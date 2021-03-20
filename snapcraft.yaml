@@ -26,6 +26,7 @@ descripton: |
   
 grade: stable
 confinement: strict
+license: Unlicense
 
 base: core18
 grade: stable
@@ -41,12 +42,17 @@ apps:
 
 parts:
   endlessh:
-    plugin: autotools
+    plugin: make
     source: https://github.com/skeeto/endlessh
     source-type: git
-    build-packages:
-      - gcc
-      
+     
     override-pull: |
       snapcraftctl pull
-      git checkout `git describe --tags --abbrev=0`      
+      snapcraftctl set-version "$(git describe --tags | sed 's/^v//' | cut -d "-" -f1)"     
+
+    build-packages:
+      - build-essential
+      - libc6-dev
+      - python3
+      - python3-rfc3339
+      - python3-systemd
