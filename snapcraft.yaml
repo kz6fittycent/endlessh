@@ -55,6 +55,6 @@ parts:
     build-packages:
       - build-essential
       - libc6-dev
-      - python3
+      - python3.7
       - python3-rfc3339
       - python3-systemd
