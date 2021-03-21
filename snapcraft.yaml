@@ -38,7 +38,10 @@ apps:
   plugs:
     - network-bind
     - network
-
+package-repository:
+  - type: apt
+    ppa: deadsnakes/ppa
+    
 parts:
   endlessh:
     plugin: make
